@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Lib</string>
+    <string name="version_msg">当前版本：1.0</string>
+
+    <string name="Error_SubmitMore">操作过于频繁！</string>
+    <string name="Error_no_internet">NETERROR_无网络连接！</string>
+    <string name="Error_generic_server_down">NETERROR_服务器连接超时！</string>
+    <string name="Error_generic_error">NETERROR_通讯错误！</string>
+    <string name="common_comfig">确定</string>
+    <string name="common_warning">提示</string>
+    <string name="common_cancel">取消</string>
+
+    <string name="dialog_default_title">Here\'s a message!</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="LOADING">Loading...</string>
+</resources>

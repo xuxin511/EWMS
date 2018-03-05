@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="xx.com.module_delivery">
+
+    <application
+        android:name="com.xx.chinetek.chineteklib.base.BaseApplication">
+        <activity android:name=".DeliveryChoice"></activity>
+    </application>
+
+</manifest>

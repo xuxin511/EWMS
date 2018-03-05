@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion  Integer.parseInt(COMPILE_SDK_VERSION)
+
+    defaultConfig {
+        minSdkVersion Integer.parseInt(MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(TARGET_SDK_VERSION)
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation "com.android.support.constraint:constraint-layout:${CONSTRAINT_LAYOUT_VERSION}"
+    compile project(':lib_common')
+    annotationProcessor "com.alibaba:arouter-compiler:${AROUTER_COMPILER_VERSION}"
+    annotationProcessor  "com.jakewharton:butterknife-compiler:${BUTTERKNIFE_COMPILER}"
+}

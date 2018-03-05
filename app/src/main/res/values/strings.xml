@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">EWMS</string>
+
+
+    <string name="btnLogin">登陆</string>
+    <string name="Function">功能菜单</string>
+    <string name="receipt">收货</string>
+
+    <string name="upshelf">上架</string>
+    <string name="undercarriage">下架</string>
+    <string name="check">复核</string>
+    <string name="inventory">盘点</string>
+    <string name="transfor">调拨</string>
+    <string name="query">查询</string>
+    <string name="move">移库</string>
+    <string name="adjust">库存调整</string>
+</resources>
