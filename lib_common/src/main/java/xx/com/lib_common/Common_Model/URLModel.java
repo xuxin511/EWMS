@@ -15,12 +15,19 @@ public class URLModel {
         return  new URLModel();
     }
 
-    private static String  LastContent="Service.svc/";
+    private static String  LastContent="api/pda/";
 
     String  GetWCFAdress(){
         return  "http://"+IPAdress+":"+Port+"/"+LastContent;
     }
 
     public String UserLoginADF = GetWCFAdress()+"UserLoginADF"; //用户登录
+    public String GetT_InStockListADF = GetWCFAdress()+"GetT_InStockListADF"; //收货表头
 
+
+    public static String TAG_UserLoginADF="UserLoginADF";
+    public static final int RESULT_GET_LOGIN_INFO = 101;
+
+    public static String TAG_GetT_InStockList = "ReceiptBillChoice_GetT_InStockList";
+    public static final int RESULT_GetT_InStockList = 102;
 }

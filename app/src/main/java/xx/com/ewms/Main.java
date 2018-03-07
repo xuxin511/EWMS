@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import xx.com.adapter.FuncRecyclerAdapter;
+import xx.com.Adapter.FuncRecyclerAdapter;
 import xx.com.lib_common.Common_Model.Action.LoginActions;
 import xx.com.lib_common.Common_Model.Action.MainActions;
-import xx.com.model.FuncModel;
+import xx.com.Model.FuncModel;
 
 @Route(path = LoginActions.Action_Login_Main)
 public class Main extends BaseActivity {
@@ -65,7 +65,7 @@ public class Main extends BaseActivity {
 
     private void initMenu() {
         funcModels.add(new FuncModel(R.drawable.recept,getString(R.string.receipt), MainActions.Action_Main_Receipt));
-        funcModels.add(new FuncModel(R.drawable.upshelf,getString(R.string.upshelf),MainActions.Action_Main_Receipt));
+//        funcModels.add(new FuncModel(R.drawable.upshelf,getString(R.string.upshelf),MainActions.Action_Main_Receipt));
         funcModels.add(new FuncModel(R.drawable.move,getString(R.string.move),MainActions.Action_Main_Receipt));
         funcModels.add(new FuncModel(R.drawable.undercarriage,getString(R.string.undercarriage),MainActions.Action_Main_Delivery));
         funcModels.add(new FuncModel(R.drawable.check,getString(R.string.check),MainActions.Action_Main_Receipt));

@@ -1,4 +1,4 @@
-package xx.com.adapter;
+package xx.com.Adapter;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import java.util.List;
 
 import xx.com.ewms.R;
-import xx.com.model.FuncModel;
+import xx.com.Model.FuncModel;
 
 /**
  * Created by GHOST on 2018/2/19.

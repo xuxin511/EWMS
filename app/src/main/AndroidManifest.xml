@@ -22,7 +22,6 @@
         </activity>
         <activity android:name=".Main" />
         <activity android:name=".Setting" />
-        <activity android:name=".TEST"></activity>
     </application>
 
 </manifest>

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Module_Receipt</string>
+
+    <string name="receipt_title">收货</string>
+    <string name="receiptscan_title_sub">收货扫描</string>
+    <string name="receipt_title_sub">收货单据列表</string>
+    <string name="filter_content">请输入或扫描单号</string>
+    <string name="Msg_GetT_InStockListADF">获取收货列表...</string>
 </resources>

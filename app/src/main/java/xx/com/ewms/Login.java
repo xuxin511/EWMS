@@ -7,7 +7,6 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Message;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
@@ -26,22 +25,31 @@ import com.xx.chinetek.chineteklib.util.Network.NetworkError;
 import com.xx.chinetek.chineteklib.util.Network.RequestHandler;
 import com.xx.chinetek.chineteklib.util.dialog.MessageBox;
 import com.xx.chinetek.chineteklib.util.dialog.ToastUtil;
+import com.xx.chinetek.chineteklib.util.function.DESUtil;
+import com.xx.chinetek.chineteklib.util.function.GsonUtil;
+import com.xx.chinetek.chineteklib.util.log.LogUtil;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import xx.com.lib_common.Common_Model.Action.LoginActions;
+import xx.com.lib_common.Common_Model.CommUtil.SharePreferUtil;
+import xx.com.lib_common.Common_Model.CommonModel;
+import xx.com.lib_common.Common_Model.Model.User.UserModel;
+import xx.com.lib_common.Common_Model.Model.User.WareHouseInfo;
 import xx.com.lib_common.Common_Model.URLModel;
+
+import static xx.com.lib_common.Common_Model.URLModel.RESULT_GET_LOGIN_INFO;
+import static xx.com.lib_common.Common_Model.URLModel.TAG_UserLoginADF;
 
 @Route(path = LoginActions.Action_Login_Login)
 public class Login extends BaseActivity {
 
 
-    String TAG="Loagin";
 
-    private static final int RESULT_GET_LOGIN_INFO = 101;
 
 
 
@@ -58,7 +66,8 @@ public class Login extends BaseActivity {
     }
 
     void AnalysisJson(String result){
-
+        String json=result;
+        ARouter.getInstance().build(LoginActions.Action_Login_Main).navigation();
     }
 
     Context context=Login.this;
@@ -69,6 +78,8 @@ public class Login extends BaseActivity {
     ImageView ivLogo;
     @BindView(R.id.txt_version)
     TextView txtVersion;
+    @BindView(R.id.txt_WareHousName)
+    TextView txtWareHousName;
     @BindView(R.id.img_pass)
     ImageView imgPass;
     @BindView(R.id.img_user)
@@ -80,6 +91,8 @@ public class Login extends BaseActivity {
     @BindView(R.id.edt_Password)
     EditText edtPassword;
 
+
+    List<WareHouseInfo> lstWarehouse;
     @Override
     protected void initViews() {
         Paramater.IsShowTitleBar=false;
@@ -91,24 +104,39 @@ public class Login extends BaseActivity {
     protected void initData() {
         super.initData();
         txtVersion.setText(updateVersionService.getVersionCode(context)+"");
+        edtUserName.setText("2014030016");
+        edtPassword.setText("123456");
+        SharePreferUtil.ReadUserShare(context);
+        if( CommonModel.userInfo!=null){
+            edtUserName.setText( CommonModel.userInfo.getUserNo());
+            edtPassword.setText(DESUtil.decode( CommonModel.userInfo.getPassWord()));
+            txtWareHousName.setText(CommonModel.userInfo.getWarehouseName());
+            lstWarehouse=CommonModel.userInfo.getLstWarehouse();
+        }
         initAnims();
     }
 
     @OnClick(R.id.btn_login)
-    public void btn_loginClick(View view){
-        if(TextUtils.isEmpty(edtUserName.getText())){
-            try {
-                MessageBox.Show(context, "用户名为空");
-            }catch (Exception ex){
-                ToastUtil.show(ex.getMessage());
-            }
+    public void btn_loginClick(View view) {
+        String userName = edtUserName.getText().toString().trim();
+        String password = edtPassword.getText().toString().trim();
+        UserModel user = new UserModel();
+        user.setUserNo(userName);
+        user.setPassWord(DESUtil.encode(password));
+        user.setWarehouseID(3);
+        if (!user.CheckUserAndPass()) {
+            MessageBox.Show(context, getString(R.string.InputNameOrPass));
             return;
         }
+        CommonModel.userInfo=user;
+        String userJson = GsonUtil.parseModelToJson(user);
+        LogUtil.WriteLog(Login.class, TAG_UserLoginADF, userJson);
         Map<String, String> params = new HashMap<>();
-        params.put("UserJson", "1233");
-        RequestHandler.addRequestWithDialog(Request.Method.POST, TAG, "登陆。。。", context, mHandler, RESULT_GET_LOGIN_INFO,
+        params.put("UserJson", userJson);
+        RequestHandler.addRequestWithDialog(Request.Method.GET, TAG_UserLoginADF, getString(R.string.CheckUser), context, mHandler, RESULT_GET_LOGIN_INFO,
                 null, URLModel.GetURL().UserLoginADF, params, null);
-        ARouter.getInstance().build(LoginActions.Action_Login_Main).navigation();
+
+
     }
 
     @OnClick(R.id.btn_Setting)
@@ -130,6 +158,7 @@ public class Login extends BaseActivity {
         ObjectAnimator tranedtPassword = ObjectAnimator.ofFloat(edtPassword, "translationY", 200, 0);
         ObjectAnimator tranRegister = ObjectAnimator.ofFloat(btnLogin, "translationY", 200, 0);
         ObjectAnimator tranbtnSetting = ObjectAnimator.ofFloat(btnSetting, "translationY", 200, 0);
+        ObjectAnimator tranWareHousName = ObjectAnimator.ofFloat(txtWareHousName, "translationY", 200, 0);
         //将注册、登录的控件alpha属性从0变到1
         ObjectAnimator alphaimgPass = ObjectAnimator.ofFloat(imgPass, "alpha", 0, 1);
         ObjectAnimator alphaimgUser = ObjectAnimator.ofFloat(imgUser, "alpha", 0, 1);
@@ -137,11 +166,14 @@ public class Login extends BaseActivity {
         ObjectAnimator alphaedtPassword = ObjectAnimator.ofFloat(edtPassword, "alpha", 0, 1);
         ObjectAnimator alphaRegister = ObjectAnimator.ofFloat(btnLogin, "alpha", 0, 1);
         ObjectAnimator alphabtnSetting = ObjectAnimator.ofFloat(btnSetting, "alpha", 0, 1);
+        ObjectAnimator alphaWareHousName = ObjectAnimator.ofFloat(txtWareHousName, "alpha", 0, 1);
         final AnimatorSet bottomAnim = new AnimatorSet();
         bottomAnim.setDuration(1000);
         //同时执行控件平移和alpha渐变动画
-        bottomAnim.play(tranRegister).with(tranimgPass).with(tranimgUser).with(tranedtUserName).with(tranedtPassword).with(tranbtnSetting)
-                .with(alphaRegister).with(alphaimgPass).with(alphaimgUser).with(alphaedtUserName).with(alphaedtPassword).with(alphabtnSetting);
+        bottomAnim.play(tranRegister).with(tranimgPass).with(tranimgUser).with(tranedtUserName)
+                .with(tranedtPassword).with(tranbtnSetting).with(tranWareHousName)
+                .with(alphaRegister).with(alphaimgPass).with(alphaimgUser)
+                .with(alphaedtUserName).with(alphaedtPassword).with(alphabtnSetting).with(alphaWareHousName);
 
         //获取屏幕高度
         WindowManager manager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);

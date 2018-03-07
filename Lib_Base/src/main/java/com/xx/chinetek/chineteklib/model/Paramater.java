@@ -9,12 +9,12 @@ public class Paramater {
     /**
     服务器IP地址
      */
-    public static String IPAdress="192.168.100.200";
+    public static String IPAdress="180.166.173.214";
 
     /**
     服务器端口号
      */
-    public static int Port=80;//9000;
+    public static int Port=7777;//9000;
 
     /**
      *超时时间

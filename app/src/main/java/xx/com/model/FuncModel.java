@@ -1,4 +1,4 @@
-package xx.com.model;
+package xx.com.Model;
 
 /**
  * Created by GHOST on 2018/2/19.

@@ -26,8 +26,9 @@ public class NetDateTimeAdapter extends TypeAdapter<Date> {
       //  str = str.replaceAll("[^0-9]", "");
         if (!TextUtils.isEmpty(str)) {
             try {
-                Date date=new Date(str);
-                result = date;//;new Date(Long.parseLong(str));
+                str=str.replace("/Date(","").replace(")/","");
+                String time = str.substring(0,str.length());
+                result= new Date(Long.parseLong(time));
             } catch (NumberFormatException e) {
             }
         }

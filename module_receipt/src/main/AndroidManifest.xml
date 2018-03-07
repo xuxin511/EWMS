@@ -3,7 +3,8 @@
     package="xx.com.module_receipt">
 
     <application>
-        <activity android:name=".ReceiptChoice"></activity>
+        <activity android:name=".ReceiptChoice" />
+        <activity android:name=".ReceiptScan"></activity>
     </application>
 
 </manifest>

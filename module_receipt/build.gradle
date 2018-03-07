@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.jakewharton.butterknife'
 
 android {
-    compileSdkVersion  Integer.parseInt(COMPILE_SDK_VERSION)
+    compileSdkVersion Integer.parseInt(COMPILE_SDK_VERSION)
 
     defaultConfig {
         minSdkVersion Integer.parseInt(MIN_SDK_VERSION)
@@ -11,7 +11,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
+                arguments = [moduleName: project.getName()]
             }
         }
     }
@@ -27,7 +27,8 @@ android {
 
 dependencies {
     implementation "com.android.support.constraint:constraint-layout:${CONSTRAINT_LAYOUT_VERSION}"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile project(':lib_common')
     annotationProcessor "com.alibaba:arouter-compiler:${AROUTER_COMPILER_VERSION}"
-    annotationProcessor  "com.jakewharton:butterknife-compiler:${BUTTERKNIFE_COMPILER}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${BUTTERKNIFE_COMPILER}"
 }
