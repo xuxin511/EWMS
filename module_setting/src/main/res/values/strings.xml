@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">module_setting</string>
+    <string name="Setting">参数设置</string>
+    <string name="Setting_IPAdress">服务器地址：</string>
+    <string name="Setting_Port">端口：</string>
+    <string name="Setting_TimeOut">超时时间：</string>
+    <string name="Setting_IsInputNum">是否启用数量输入：</string>
+    <string name="Setting_Save">保存</string>
+</resources>

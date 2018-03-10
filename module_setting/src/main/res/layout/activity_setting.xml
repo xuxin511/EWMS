@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="xx.com.ewms.Setting">
+
+    <LinearLayout style="@style/wrap_layout" >
+        <!-- 上圆角-->
+        <LinearLayout style="@style/top_layout"
+            android:id="@+id/layoutIPAdress">
+            <TextView style="@style/usertext"
+                android:text="@string/Setting_IPAdress" />
+
+            <TextView
+                android:id="@+id/txt_IPAdress"
+                style="@style/usertext"
+                android:layout_weight="1"
+                android:textAlignment="textEnd" />
+
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+
+
+        <View style="@style/bg_line"/>
+
+        <LinearLayout style="@style/mid_layout"
+            android:id="@+id/layoutPort">
+            <TextView style="@style/usertext"
+                android:text="@string/Setting_Port" />
+
+            <TextView
+                android:id="@+id/txt_Port"
+                style="@style/usertext"
+                android:layout_weight="1"
+                android:textAlignment="textEnd" />
+
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+        <View style="@style/bg_line"/>
+
+        <LinearLayout style="@style/bottom_layout"
+            android:id="@+id/layoutTimeOut">
+            <TextView style="@style/usertext"
+                android:text="@string/Setting_TimeOut" />
+
+            <TextView
+                android:id="@+id/txt_TimeOut"
+                style="@style/usertext"
+                android:layout_weight="1"
+                android:textAlignment="textEnd" />
+
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout style="@style/wrap_layout">
+        <LinearLayout style="@style/single_layout"
+            android:id="@+id/layoutSysPassword">
+
+            <TextView style="@style/usertext"
+                android:text="@string/Setting_IsInputNum"/>
+
+            <TextView
+                style="@style/usertext"
+                android:layout_weight="1"/>
+
+            <CheckBox
+                android:id="@+id/ckIsuserRemark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/CustomCheckBoxTheme"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

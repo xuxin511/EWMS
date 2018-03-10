@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/lib_common" />
             <option value="$PROJECT_DIR$/module_delivery" />
             <option value="$PROJECT_DIR$/module_receipt" />
+            <option value="$PROJECT_DIR$/module_setting" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

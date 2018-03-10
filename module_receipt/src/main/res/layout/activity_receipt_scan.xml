@@ -9,100 +9,109 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/edt_ContentText"
+            android:id="@+id/edt_Scanbarcode"
             style="@style/EditTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:ems="10"
+            android:hint="@string/hint_scan_barcode"
             android:inputType="textPersonName"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/txt_contentName"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@+id/txt_contentName"
+            app:layout_constraintEnd_toStartOf="@+id/edt_ScanQty"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_VoucherNo" />
+
+        <EditText
+            android:id="@+id/edt_ScanQty"
+            style="@style/EditTextStyle"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:ems="10"
+            android:hint="@string/hint_scan_qty"
+            android:inputType="number"
+            android:text="1"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_Scanbarcode"
             app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/txt_VoucherNo"
             style="@style/TextViewComminStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-        <TextView
-            android:id="@+id/txt_contentName"
-            style="@style/TextViewComminStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-        <TextView
-            android:id="@+id/textView4"
-            style="@style/TextViewComminStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/guideline2"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.32"
-            tools:layout_editor_absoluteX="108dp"
-            tools:layout_editor_absoluteY="0dp" />
-
-        <Spinner
-            android:id="@+id/spin_sendType"
-            style="@style/Platform.Widget.AppCompat.Spinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:spinnerMode="dialog"
-            android:theme="@style/AlertDialog.AppCompat.Light"
-            app:layout_constraintBottom_toBottomOf="@+id/textView4"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="@+id/guideline2"
-            app:layout_constraintRight_toRightOf="parent" />
+            android:layout_marginTop="8dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Spinner
-            android:id="@+id/spin_Custom"
-            style="@style/Platform.Widget.AppCompat.Spinner"
+        <TextView
+            android:id="@+id/txt_MeterialName"
+            style="@style/TextViewComminStyle"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:spinnerMode="dialog"
-            android:theme="@style/AlertDialog.AppCompat.Light"
-            app:layout_constraintBottom_toBottomOf="@+id/textView3"
-            app:layout_constraintLeft_toLeftOf="@+id/guideline2"
-            app:layout_constraintRight_toRightOf="parent" />
+            android:layout_height="25dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:maxLines="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_Scanbarcode" />
+
     </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_ReceiptDetail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/contact_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/upload"
+        app:backgroundTint="@color/blue"
+        app:borderWidth="0dp"
+        app:elevation="1dp"
+        app:pressedTranslationZ="0dp"
+        app:rippleColor="@color/royalblue"
+        app:layout_anchor="@+id/rv_ReceiptDetail"
+        app:layout_anchorGravity="bottom|right|end"
+        app:layout_behavior="com.xx.chinetek.chineteklib.util.Button.ScrollAwareFABBehavior"
+        />
+
 </android.support.constraint.ConstraintLayout>

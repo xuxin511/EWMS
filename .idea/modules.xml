@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/lib_common/lib_common.iml" filepath="$PROJECT_DIR$/lib_common/lib_common.iml" />
       <module fileurl="file://$PROJECT_DIR$/module_delivery/module_delivery.iml" filepath="$PROJECT_DIR$/module_delivery/module_delivery.iml" />
       <module fileurl="file://$PROJECT_DIR$/module_receipt/module_receipt.iml" filepath="$PROJECT_DIR$/module_receipt/module_receipt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module_setting/module_setting.iml" filepath="$PROJECT_DIR$/module_setting/module_setting.iml" />
     </modules>
   </component>
 </project>

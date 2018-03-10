@@ -31,4 +31,5 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:${BUTTERKNIFE_COMPILER}"
     compile project(':module_receipt')
     compile project(':module_delivery')
+    compile project(':module_setting')
 }

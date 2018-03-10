@@ -46,9 +46,16 @@ public class JsonStringRequest extends JsonRequest<String> {
         }
     }
 
+//    @Override
+//    public Map<String, String> getHeaders() throws AuthFailureError {
+//        HashMap<String, String> headers = new HashMap<String, String>();
+//        headers.put("Content-Type", "application/json");
+//        return headers;
+//    }
+
     /*
-    调用WCF时，返回值包含"," 及转义字符，需要移除
-     */
+        调用WCF时，返回值包含"," 及转义字符，需要移除
+         */
     public String JSONTokener(String in) {
         // consume an optional byte order mark (BOM) if it exists
         if (in != null && in.endsWith("\"")) {

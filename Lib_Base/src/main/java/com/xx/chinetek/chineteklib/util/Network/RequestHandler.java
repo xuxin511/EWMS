@@ -64,6 +64,40 @@ public class RequestHandler {
         getRequestQueue().add(JsonRequest);
     }
 
+    /**
+     * C# webapi方式调用
+     */
+    private static void addRequest(
+            int method, String tag,
+            final Handler handler, final int what,
+            final Bundle bundle, String url, final String  params, final Map<String, String> header,
+            final NetWorkRequestListener listener) {
+        listener.onPreRequest();
+        JsonStringRequest JsonRequest = new JsonStringRequest(method, url, params, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                onVolleyResponse(response, handler, what, bundle);
+                listener.onResponse();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                onVolleyErrorResponse(volleyError, listener, handler, bundle);
+            }
+        });
+        //清除缓存
+        getRequestQueue().getCache().get(url);
+        getRequestQueue().getCache().remove(url);
+        getRequestQueue().getCache().clear();
+        // 清除请求队列中的tag标记请求
+        getRequestQueue().cancelAll(tag);
+        // 为当前请求添加标记
+        JsonRequest.setTag(tag);
+        //设置超时时间
+        JsonRequest.setRetryPolicy(getRetryPolicy());
+        getRequestQueue().add(JsonRequest);
+    }
+
     private static void onVolleyErrorResponse(VolleyError volleyError, NetWorkRequestListener listener, Handler handler, Bundle bundle) {
 //        if (listener.retry()) {
 //            listener.onFailed();
@@ -98,18 +132,19 @@ public class RequestHandler {
             final int method, final String tag, final Handler handler, final int what, final Bundle bundle,
             final String url, final Map<String, String> params, final Map<String, String> header) {
         addRequest(method, tag, handler, what, bundle, url, params, header, new DefaultRequestListener() {
-//            @Override
-//            public boolean retry() {
-//                addRequest(method, tag, handler, what, bundle, url, params, header,
-//                        retryTimer++ >= MAX_RETRY_TIME ? new DefaultRequestListener() : this);
-//                return true;
-//            }
         });
     }
 
     public static void addRequestWithDialog(
             final int method, final String tag, final String LoadText, Context context, final Handler handler, final int what, final Bundle bundle,
             final String url, final Map<String, String> params, final Map<String, String> header) {
+        addRequest(method, tag, handler, what, bundle, url, params, header, new DefaultDialogRequestListener(context, LoadText,tag) {
+        });
+    }
+
+    public static void addRequestWithDialog(
+            final int method, final String tag, final String LoadText, Context context, final Handler handler, final int what, final Bundle bundle,
+            final String url, final String params, final Map<String, String> header) {
         addRequest(method, tag, handler, what, bundle, url, params, header, new DefaultDialogRequestListener(context, LoadText,tag) {
 //            @Override
 //            public boolean retry() {

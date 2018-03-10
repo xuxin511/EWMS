@@ -23,6 +23,8 @@ public class URLModel {
 
     public String UserLoginADF = GetWCFAdress()+"UserLoginADF"; //用户登录
     public String GetT_InStockListADF = GetWCFAdress()+"GetT_InStockListADF"; //收货表头
+    public String GetT_InStockDetailListByHeaderIDADF = GetWCFAdress()+"GetT_InStockDetailListByHeaderIDADF"; //收货表体
+
 
 
     public static String TAG_UserLoginADF="UserLoginADF";
@@ -30,4 +32,11 @@ public class URLModel {
 
     public static String TAG_GetT_InStockList = "ReceiptBillChoice_GetT_InStockList";
     public static final int RESULT_GetT_InStockList = 102;
+
+    public static String TAG_GetT_InStockDetailListByHeaderIDADF="ReceiptionScan_GetT_InStockDetailListByHeaderIDADF";
+    public static final int RESULT_Msg_GetT_InStockDetailListByHeaderIDADF=103;
+    public static String TAG_GetT_PalletDetailByBarCodeADF="ReceiptionScan_GetT_PalletDetailByBarCodeADF";
+    public static final int RESULT_Msg_GetT_PalletDetailByBarCode=104;
+    public static String TAG_SaveT_InStockDetailADF="ReceiptionScan_SaveT_InStockDetailADF";
+    public static final int RESULT_Msg_SaveT_InStockDetailADF=105;
 }

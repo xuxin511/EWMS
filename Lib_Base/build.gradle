@@ -32,10 +32,11 @@ dependencies {
     compile files('libs/logback-android-1.1.1-5.jar')
     compile 'org.slf4j:slf4j-api:1.7.21'
     compile "com.jakewharton:butterknife:${BUTTERKNIFE_COMPILER}"
-   compile 'com.pnikosis:materialish-progress:1.0'
+    compile 'com.pnikosis:materialish-progress:1.0'
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.alibaba:fastjson:1.2.14'
     compile 'com.google.code.gson:gson:2.8.2'
+    compile "com.android.support:design:${SUPPORT_LIB_VERSION}"
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.35'
     compile "com.android.support:appcompat-v7:${SUPPORT_LIB_VERSION}"
     compile "com.android.support:cardview-v7:${SUPPORT_LIB_VERSION}"

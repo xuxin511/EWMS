@@ -25,7 +25,7 @@ public class ReceiptListAdapter extends BaseQuickAdapter<InStockInfo,BaseViewHol
 
     @Override
     protected void convert(BaseViewHolder helper, InStockInfo item) {
-        helper.setText(R.id.txt_VoucherNo,item.getErpVoucherNo());
+        helper.setText(R.id.txt_VoucherNo,item.getErpVoucherNo()==null?item.getVoucherNo():item.getErpVoucherNo());
         helper.setText(R.id.txt_SupplierContent,"供："+item.getSupplierName());
         helper.setText(R.id.txt_CreateTime,item.getStrCreateTime());
     }

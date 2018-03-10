@@ -19,8 +19,10 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.volley.Request;
+import com.google.gson.reflect.TypeToken;
 import com.xx.chinetek.chineteklib.base.BaseActivity;
 import com.xx.chinetek.chineteklib.model.Paramater;
+import com.xx.chinetek.chineteklib.model.ReturnMsgModel;
 import com.xx.chinetek.chineteklib.util.Network.NetworkError;
 import com.xx.chinetek.chineteklib.util.Network.RequestHandler;
 import com.xx.chinetek.chineteklib.util.dialog.MessageBox;
@@ -36,6 +38,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.OnClick;
 import xx.com.lib_common.Common_Model.Action.LoginActions;
+import xx.com.lib_common.Common_Model.Action.SettingAction;
 import xx.com.lib_common.Common_Model.CommUtil.SharePreferUtil;
 import xx.com.lib_common.Common_Model.CommonModel;
 import xx.com.lib_common.Common_Model.Model.User.UserModel;
@@ -47,11 +50,6 @@ import static xx.com.lib_common.Common_Model.URLModel.TAG_UserLoginADF;
 
 @Route(path = LoginActions.Action_Login_Login)
 public class Login extends BaseActivity {
-
-
-
-
-
 
     @Override
     public void onHandleMessage(Message msg) {
@@ -66,8 +64,21 @@ public class Login extends BaseActivity {
     }
 
     void AnalysisJson(String result){
-        String json=result;
-        ARouter.getInstance().build(LoginActions.Action_Login_Main).navigation();
+        try {
+            LogUtil.WriteLog(Login.class, TAG_UserLoginADF, result);
+            ReturnMsgModel<UserModel> returnMsgModel = GsonUtil.getGsonUtil().fromJson(result, new TypeToken<ReturnMsgModel<UserModel>>() {
+            }.getType());
+            if (returnMsgModel.getHeaderStatus().equals("S")) {
+                CommonModel.userInfo=returnMsgModel.getModelJson();
+                Intent intent =new Intent(context,Main.class);
+                startActivityLeft(intent);
+               // ARouter.getInstance().build(LoginActions.Action_Login_Main).navigation();
+            } else {
+                MessageBox.Show(context,returnMsgModel.getMessage());
+            }
+        }catch (Exception ex){
+            ToastUtil.show(ex.getMessage());
+        }
     }
 
     Context context=Login.this;
@@ -128,20 +139,20 @@ public class Login extends BaseActivity {
             MessageBox.Show(context, getString(R.string.InputNameOrPass));
             return;
         }
-        CommonModel.userInfo=user;
+
         String userJson = GsonUtil.parseModelToJson(user);
         LogUtil.WriteLog(Login.class, TAG_UserLoginADF, userJson);
         Map<String, String> params = new HashMap<>();
-        params.put("UserJson", userJson);
-        RequestHandler.addRequestWithDialog(Request.Method.GET, TAG_UserLoginADF, getString(R.string.CheckUser), context, mHandler, RESULT_GET_LOGIN_INFO,
-                null, URLModel.GetURL().UserLoginADF, params, null);
+        params.put("", userJson);//UserJson
+        RequestHandler.addRequestWithDialog(Request.Method.POST, TAG_UserLoginADF, getString(R.string.CheckUser), context, mHandler, RESULT_GET_LOGIN_INFO,
+                null, URLModel.GetURL().UserLoginADF, userJson, null);
 
 
     }
 
     @OnClick(R.id.btn_Setting)
     public void btn_SettingClick(View view){
-        ARouter.getInstance().build(LoginActions.Action_Login_Setting).navigation();
+        ARouter.getInstance().build(SettingAction.Action_Setring_Setting).navigation();
     }
 
 

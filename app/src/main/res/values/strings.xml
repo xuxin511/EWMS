@@ -15,6 +15,8 @@
     <string name="move">移库</string>
     <string name="adjust">库存调整</string>
 
+
+
     <string name="InputNameOrPass">请输入用户名或者密码</string>
     <string name="CheckUser">用户验证...</string>
 </resources>

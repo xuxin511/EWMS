@@ -6,6 +6,9 @@
     <string name="Error_no_internet">NETERROR_无网络连接！</string>
     <string name="Error_generic_server_down">NETERROR_服务器连接超时！</string>
     <string name="Error_generic_error">NETERROR_通讯错误！</string>
+    <string name="hint_scan_barcode">请输入或扫描条码</string>
+    <string name="filter_content">请输入或扫描单号</string>
+    <string name="hint_scan_qty">扫描数量</string>
     <string name="common_comfig">确定</string>
     <string name="common_warning">提示</string>
     <string name="common_cancel">取消</string>

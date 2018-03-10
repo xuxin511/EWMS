@@ -4,6 +4,10 @@
     <string name="receipt_title">收货</string>
     <string name="receiptscan_title_sub">收货扫描</string>
     <string name="receipt_title_sub">收货单据列表</string>
-    <string name="filter_content">请输入或扫描单号</string>
+
+    <string name="receipt_scan_upload">上架</string>
+
+    <string name="Msg_dialog_uploadArea">请扫描上架货位</string>
     <string name="Msg_GetT_InStockListADF">获取收货列表...</string>
+    <string name="Msg_GetT_InStockDetailListByHeaderIDADF">获取收货明细列表...</string>
 </resources>

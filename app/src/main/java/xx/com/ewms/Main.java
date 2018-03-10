@@ -5,7 +5,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xx.chinetek.chineteklib.base.BaseActivity;
@@ -17,11 +16,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import xx.com.Adapter.FuncRecyclerAdapter;
-import xx.com.lib_common.Common_Model.Action.LoginActions;
-import xx.com.lib_common.Common_Model.Action.MainActions;
 import xx.com.Model.FuncModel;
+import xx.com.lib_common.Common_Model.Action.MainActions;
 
-@Route(path = LoginActions.Action_Login_Main)
+//@Route(path = LoginActions.Action_Login_Main)
 public class Main extends BaseActivity {
 
     Context context=Main.this;

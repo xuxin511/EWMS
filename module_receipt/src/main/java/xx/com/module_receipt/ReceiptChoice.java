@@ -29,8 +29,6 @@ import com.xx.chinetek.chineteklib.util.function.GsonUtil;
 import com.xx.chinetek.chineteklib.util.log.LogUtil;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 import xx.com.Adapter.ReceiptListAdapter;
@@ -98,7 +96,6 @@ public class ReceiptChoice extends BaseActivity implements SwipeRefreshLayout.On
 
     @Override
     public void onRefresh() {
-
         receiptListAdapter.setEnableLoadMore(false);//这里的作用是防止下拉刷新的时候还可以上拉加载
         GetT_InStockList();
     }
@@ -122,13 +119,11 @@ public class ReceiptChoice extends BaseActivity implements SwipeRefreshLayout.On
         try {
             InStockInfo inStockInfo = new InStockInfo();
             inStockInfo.setStatus(1);
+            inStockInfo.setUserID(CommonModel.userInfo.getID());
             String ModelJson = GsonUtil.parseModelToJson(inStockInfo);
-            Map<String, String> params = new HashMap<>();
-            params.put("UserJson", GsonUtil.parseModelToJson(CommonModel.userInfo));
-            params.put("ModelJson", ModelJson);
             LogUtil.WriteLog(ReceiptChoice.class, TAG_GetT_InStockList, ModelJson);
-            RequestHandler.addRequestWithDialog(Request.Method.GET, TAG_GetT_InStockList, getString(R.string.Msg_GetT_InStockListADF), context, mHandler, RESULT_GetT_InStockList, null,
-                    URLModel.GetURL().GetT_InStockListADF, params, null);
+            RequestHandler.addRequestWithDialog(Request.Method.POST, TAG_GetT_InStockList, getString(R.string.Msg_GetT_InStockListADF), context, mHandler, RESULT_GetT_InStockList, null,
+                    URLModel.GetURL().GetT_InStockListADF, ModelJson, null);
         } catch (Exception ex) {
             swipeLayout.setRefreshing(false);
             receiptListAdapter.setEnableLoadMore(true);
@@ -138,17 +133,15 @@ public class ReceiptChoice extends BaseActivity implements SwipeRefreshLayout.On
 
     void  AnalysisGetT_InStockListJson(String result){
         try {
-
+            LogUtil.WriteLog(ReceiptChoice.class, TAG_GetT_InStockList, result);
+            ReturnMsgModelList<InStockInfo> returnMsgModel = GsonUtil.getGsonUtil().fromJson(result, new TypeToken<ReturnMsgModelList<InStockInfo>>() {
+            }.getType());
             InStockInfo inStockInfo=new InStockInfo();
             inStockInfo.setErpVoucherNo("S01234567");
             inStockInfo.setSupplierName("test1");
             inStockInfo.setStrCreateTime("2018-01-01");
             inStockInfos.add(inStockInfo);
             BindRecycleView();
-            LogUtil.WriteLog(ReceiptChoice.class, TAG_GetT_InStockList, result);
-            ReturnMsgModelList<InStockInfo> returnMsgModel = GsonUtil.getGsonUtil().fromJson(result, new TypeToken<ReturnMsgModelList<InStockInfo>>() {
-            }.getType());
-
             if (returnMsgModel.getHeaderStatus().equals("S")) {
                 inStockInfos = returnMsgModel.getModelJson();
                 BindRecycleView();

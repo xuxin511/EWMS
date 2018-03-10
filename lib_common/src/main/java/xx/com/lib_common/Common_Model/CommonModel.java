@@ -10,4 +10,6 @@ import xx.com.lib_common.Common_Model.Model.User.UserModel;
 public class CommonModel {
 
     public static UserModel userInfo;
+
+    public static Boolean IsInputQty=false;
 }

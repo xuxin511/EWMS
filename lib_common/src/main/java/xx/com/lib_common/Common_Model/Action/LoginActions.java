@@ -6,6 +6,4 @@ package xx.com.lib_common.Common_Model.Action;
 
 public class LoginActions {
     public static final String Action_Login_Login="/Mian/Login";
-    public static final String Action_Login_Main="/Mian/Main";
-    public static final String Action_Login_Setting="/Mian/Setting";
 }
