@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">module_inventory</string>
+    <string name="Inventory">盘点</string>
+</resources>

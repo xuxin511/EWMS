@@ -12,8 +12,11 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/lib_common" />
             <option value="$PROJECT_DIR$/module_delivery" />
+            <option value="$PROJECT_DIR$/module_inventory" />
             <option value="$PROJECT_DIR$/module_receipt" />
             <option value="$PROJECT_DIR$/module_setting" />
+            <option value="$PROJECT_DIR$/module_transform" />
+            <option value="$PROJECT_DIR$/module_warehousefunc" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

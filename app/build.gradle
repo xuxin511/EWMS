@@ -32,4 +32,7 @@ dependencies {
     compile project(':module_receipt')
     compile project(':module_delivery')
     compile project(':module_setting')
+    implementation project(':module_inventory')
+    implementation project(':module_transform')
+    implementation project(':module_warehousefunc')
 }

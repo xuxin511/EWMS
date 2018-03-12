@@ -4,90 +4,144 @@ package com.xx.chinetek.chineteklib.util.Button;
  * Created by GHOST on 2018/3/9.
  */
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
-import android.os.Build;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorListener;
-import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import android.support.v4.view.animation.FastOutLinearInInterpolator;
+import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Interpolator;
 
 
 public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
-    private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();
-    private boolean mIsAnimatingOut = false;
 
+
+    /**
+     * 因为是在XML中使用app:layout_behavior定义静态的这种行为,
+     * 必须实现一个构造函数使布局的效果能够正常工作。
+     * 否则 Could not inflate Behavior subclass error messages.
+     *
+     * @param context
+     * @param attrs
+     */
     public ScrollAwareFABBehavior(Context context, AttributeSet attrs) {
         super();
     }
 
+    /**
+     * 处理垂直方向上的滚动事件
+     *
+     * @param coordinatorLayout
+     * @param child
+     * @param directTargetChild
+     * @param target
+     * @param nestedScrollAxes
+     * @return
+     */
     @Override
-    public boolean onStartNestedScroll(final CoordinatorLayout coordinatorLayout, final FloatingActionButton child,
-                                       final View directTargetChild, final View target, final int nestedScrollAxes) {
+    public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout,
+                                       FloatingActionButton child, View directTargetChild, View target, int nestedScrollAxes) {
+
         // Ensure we react to vertical scrolling
-        return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL
-                || super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, nestedScrollAxes);
+        return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL ||
+                super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target,
+                        nestedScrollAxes);
     }
 
+    /**
+     * 检查Y的位置，并决定按钮是否动画进入或退出
+     *
+     * @param coordinatorLayout
+     * @param child
+     * @param target
+     * @param dxConsumed
+     * @param dyConsumed
+     * @param dxUnconsumed
+     * @param dyUnconsumed
+     */
     @Override
-    public void onNestedScroll(final CoordinatorLayout coordinatorLayout, final FloatingActionButton child,
-                               final View target, final int dxConsumed, final int dyConsumed,
-                               final int dxUnconsumed, final int dyUnconsumed) {
-        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
-        if (dyConsumed > 0 && !this.mIsAnimatingOut && child.getVisibility() == View.VISIBLE) {
+    public void onNestedScroll(CoordinatorLayout coordinatorLayout, FloatingActionButton child,
+                               View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
+        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed,
+                dyUnconsumed);
+
+        if (dyConsumed > 10 && child.getVisibility() == View.VISIBLE) {
             // User scrolled down and the FAB is currently visible -> hide the FAB
-            animateOut(child);
-        } else if (dyConsumed < 0 && child.getVisibility() != View.VISIBLE) {
+            //执行隐藏的动画
+            hide(child);
+        } else if (dyConsumed < -10 && child.getVisibility() != View.VISIBLE) {
             // User scrolled up and the FAB is currently not visible -> show the FAB
-            animateIn(child);
+            //执行显示的动画
+            show(child);
         }
+
     }
 
-    // Same animation that FloatingActionButton.Behavior uses to hide the FAB when the AppBarLayout exits
-    private void animateOut(final FloatingActionButton button) {
-        if (Build.VERSION.SDK_INT >= 14) {
-            ViewCompat.animate(button).translationY(button.getHeight() + getMarginBottom(button)).setInterpolator(INTERPOLATOR).withLayer()
-                    .setListener(new ViewPropertyAnimatorListener() {
-                        public void onAnimationStart(View view) {
-                            ScrollAwareFABBehavior.this.mIsAnimatingOut = true;
-                        }
+    /**
+     * 显示的动画
+     */
+    private void show(final View view) {
+        view.animate().cancel();
 
-                        public void onAnimationCancel(View view) {
-                            ScrollAwareFABBehavior.this.mIsAnimatingOut = false;
-                        }
+        // If the view isn't visible currently, we'll animate it from a single pixel
+        view.setAlpha(0f);
+        view.setScaleY(0f);
+        view.setScaleX(0f);
 
-                        public void onAnimationEnd(View view) {
-                            ScrollAwareFABBehavior.this.mIsAnimatingOut = false;
-                            view.setVisibility(View.GONE);
-                        }
-                    }).start();
-        } else {
+        view.animate()
+                .scaleX(1f)
+                .scaleY(1f)
+                .alpha(1f)
+                .setDuration(200)
+                .setInterpolator(new LinearOutSlowInInterpolator())
+                .setListener(new AnimatorListenerAdapter() {
 
-        }
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+                        view.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+
+                    }
+                });
     }
 
-    // Same animation that FloatingActionButton.Behavior uses to show the FAB when the AppBarLayout enters
-    private void animateIn(FloatingActionButton button) {
-        button.setVisibility(View.VISIBLE);
-        if (Build.VERSION.SDK_INT >= 14) {
-            ViewCompat.animate(button).translationY(0)
-                    .setInterpolator(INTERPOLATOR).withLayer().setListener(null)
-                    .start();
-        } else {
+    /**
+     * 隐藏的动画
+     */
+    private void hide(final View view) {
+        view.animate().cancel();
+        view.animate()
+                .scaleX(0f)
+                .scaleY(0f)
+                .alpha(0f)
+                .setDuration(200)
+                .setInterpolator(new FastOutLinearInInterpolator())
+                .setListener(new AnimatorListenerAdapter() {
+                    private boolean mCancelled;
 
-        }
-    }
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+                        view.setVisibility(View.VISIBLE);
+                        mCancelled = false;
+                    }
 
-    private int getMarginBottom(View v) {
-        int marginBottom = 0;
-        final ViewGroup.LayoutParams layoutParams = v.getLayoutParams();
-        if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
-            marginBottom = ((ViewGroup.MarginLayoutParams) layoutParams).bottomMargin;
-        }
-        return marginBottom;
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+                        mCancelled = true;
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        if (!mCancelled) {
+                            view.setVisibility(View.INVISIBLE);
+                        }
+                    }
+                });
     }
 }

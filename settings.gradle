@@ -1,1 +1,1 @@
-include ':app', ':Lib_Base', ':lib_common', ':module_receipt', ':module_delivery', ':module_setting'
+include ':app', ':Lib_Base', ':lib_common', ':module_receipt', ':module_delivery', ':module_setting', ':module_warehousefunc', ':module_transform', ':module_inventory'

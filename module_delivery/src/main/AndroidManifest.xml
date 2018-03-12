@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="xx.com.module_delivery">
 
-    <application
-        android:name="com.xx.chinetek.chineteklib.base.BaseApplication">
-        <activity android:name=".DeliveryChoice"></activity>
+    <application android:name="com.xx.chinetek.chineteklib.base.BaseApplication">
+        <activity android:name=".DeliveryChoice" />
+        <activity android:name=".DeliveryScan" />
+        <activity android:name=".CheckChoice" />
+        <activity android:name=".CheckScan"></activity>
     </application>
 
 </manifest>

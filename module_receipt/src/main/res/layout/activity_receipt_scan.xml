@@ -70,6 +70,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:maxLines="2"
+            android:text="物料描述"
+            android:textAlignment="viewStart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -80,29 +82,29 @@
 
     </android.support.constraint.ConstraintLayout>
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_ReceiptDetail"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.572"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.0">
 
-    <android.support.design.widget.FloatingActionButton
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_ReceiptDetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+
+        <android.support.design.widget.FloatingActionButton
         android:id="@+id/contact_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="10dp"
         android:src="@drawable/upload"
         app:backgroundTint="@color/blue"
         app:borderWidth="0dp"
@@ -113,5 +115,6 @@
         app:layout_anchorGravity="bottom|right|end"
         app:layout_behavior="com.xx.chinetek.chineteklib.util.Button.ScrollAwareFABBehavior"
         />
+    </android.support.design.widget.CoordinatorLayout>
 
 </android.support.constraint.ConstraintLayout>

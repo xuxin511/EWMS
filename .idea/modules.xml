@@ -7,8 +7,11 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_common/lib_common.iml" filepath="$PROJECT_DIR$/lib_common/lib_common.iml" />
       <module fileurl="file://$PROJECT_DIR$/module_delivery/module_delivery.iml" filepath="$PROJECT_DIR$/module_delivery/module_delivery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module_inventory/module_inventory.iml" filepath="$PROJECT_DIR$/module_inventory/module_inventory.iml" />
       <module fileurl="file://$PROJECT_DIR$/module_receipt/module_receipt.iml" filepath="$PROJECT_DIR$/module_receipt/module_receipt.iml" />
       <module fileurl="file://$PROJECT_DIR$/module_setting/module_setting.iml" filepath="$PROJECT_DIR$/module_setting/module_setting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module_transform/module_transform.iml" filepath="$PROJECT_DIR$/module_transform/module_transform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module_warehousefunc/module_warehousefunc.iml" filepath="$PROJECT_DIR$/module_warehousefunc/module_warehousefunc.iml" />
     </modules>
   </component>
 </project>

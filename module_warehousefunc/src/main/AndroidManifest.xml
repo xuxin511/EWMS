@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="xx.com.module_wharehousefunc">
+
+    <application>
+        <activity android:name=".InnerMove" />
+        <activity android:name=".StockAdjust" />
+        <activity android:name=".Query"></activity>
+    </application>
+
+</manifest>
