@@ -748,6 +748,19 @@ public class InStockDetailInfo extends Base_Model implements Parcelable {
     public InStockDetailInfo() {
     }
 
+    public InStockDetailInfo(String BarCodeEAN) {
+        this.setBarCodeEAN(BarCodeEAN);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        InStockDetailInfo that = (InStockDetailInfo) o;
+        return getBarCodeEAN().equals(that.getBarCodeEAN());
+    }
+
+
     protected InStockDetailInfo(Parcel in) {
         super(in);
         this.InStockID = in.readInt();

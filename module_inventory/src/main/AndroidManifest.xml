@@ -3,7 +3,8 @@
     package="xx.com.module_inventory">
 
     <application>
-        <activity android:name=".Inventory"></activity>
+        <activity android:name=".Inventory" />
+        <activity android:name=".InventoryChoice"></activity>
     </application>
 
 </manifest>

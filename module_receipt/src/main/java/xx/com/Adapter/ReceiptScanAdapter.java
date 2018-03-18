@@ -22,6 +22,7 @@ public class ReceiptScanAdapter extends BaseQuickAdapter<InStockDetailInfo,BaseV
         helper.setText(R.id.txt_MaterialDesc,item.getMaterialDesc());
         helper.setText(R.id.txt_ReceiptNum,"收货数："+item.getRemainQty());
         helper.setText(R.id.txt_ScanNum,"扫描数："+item.getScanQty());
+        helper.setText(R.id.txt_RowNo,"行号："+item.getRowNo());
     }
 
 }

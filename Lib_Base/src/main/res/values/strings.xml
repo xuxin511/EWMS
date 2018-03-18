@@ -6,12 +6,18 @@
     <string name="Error_no_internet">NETERROR_无网络连接！</string>
     <string name="Error_generic_server_down">NETERROR_服务器连接超时！</string>
     <string name="Error_generic_error">NETERROR_通讯错误！</string>
+    <string name="Error_isnotnum">请输入数字！</string>
     <string name="hint_scan_barcode">请输入或扫描条码</string>
+    <string name="hint_scan_AreaNo">请输入或扫描库位</string>
     <string name="filter_content">请输入或扫描单号</string>
-    <string name="hint_scan_qty">扫描数量</string>
+    <string name="hint_scan_qty">请录入数量</string>
     <string name="common_comfig">确定</string>
     <string name="common_warning">提示</string>
     <string name="common_cancel">取消</string>
+    <string name="Barcode">条码：</string>
+    <string name="AreaNo">库位：</string>
+    <string name="DeliveryAreaNo">下架库位：</string>
+    <string name="Submit">提交</string>
 
     <string name="dialog_default_title">Here\'s a message!</string>
     <string name="dialog_ok">OK</string>

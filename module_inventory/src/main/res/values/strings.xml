@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">module_inventory</string>
     <string name="Inventory">盘点</string>
+    <string name="InventoryChoice">盘点单选择</string>
+    <string name="InventoryScan">盘点扫描</string>
+    <string name="InventoryNum">盘点数量：</string>
+    <string name="InventoryFinish">结束盘点</string>
 </resources>

@@ -11,5 +11,5 @@ public class CommonModel {
 
     public static UserModel userInfo;
 
-    public static Boolean IsInputQty=false;
+    public static Boolean IsInputQty=true;
 }

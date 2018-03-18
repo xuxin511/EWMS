@@ -70,12 +70,15 @@ public class MaterialInfo  extends Base_Model implements Parcelable{
     /// 商品69码
     /// </summary>
     private String BarCode;
-    private String ColorCode;
-    private String ColorName;
-    private String SizeCode;
-    private String SizeName;
-    private String SampleCode;
-    private String SKU;
+    private String SerialNo;
+
+    public String getSerialNo() {
+        return SerialNo;
+    }
+
+    public void setSerialNo(String serialNo) {
+        SerialNo = serialNo;
+    }
 
     public String getMaterialNo() {
         return MaterialNo;
@@ -501,52 +504,8 @@ public class MaterialInfo  extends Base_Model implements Parcelable{
         BarCode = barCode;
     }
 
-    public String getColorCode() {
-        return ColorCode;
-    }
 
-    public void setColorCode(String colorCode) {
-        ColorCode = colorCode;
-    }
-
-    public String getColorName() {
-        return ColorName;
-    }
-
-    public void setColorName(String colorName) {
-        ColorName = colorName;
-    }
-
-    public String getSizeCode() {
-        return SizeCode;
-    }
-
-    public void setSizeCode(String sizeCode) {
-        SizeCode = sizeCode;
-    }
-
-    public String getSizeName() {
-        return SizeName;
-    }
-
-    public void setSizeName(String sizeName) {
-        SizeName = sizeName;
-    }
-
-    public String getSampleCode() {
-        return SampleCode;
-    }
-
-    public void setSampleCode(String sampleCode) {
-        SampleCode = sampleCode;
-    }
-
-    public String getSKU() {
-        return SKU;
-    }
-
-    public void setSKU(String SKU) {
-        this.SKU = SKU;
+    public MaterialInfo() {
     }
 
     @Override
@@ -610,15 +569,7 @@ public class MaterialInfo  extends Base_Model implements Parcelable{
         dest.writeInt(this.AreaID);
         dest.writeValue(this.StockQty);
         dest.writeString(this.BarCode);
-        dest.writeString(this.ColorCode);
-        dest.writeString(this.ColorName);
-        dest.writeString(this.SizeCode);
-        dest.writeString(this.SizeName);
-        dest.writeString(this.SampleCode);
-        dest.writeString(this.SKU);
-    }
-
-    public MaterialInfo() {
+        dest.writeString(this.SerialNo);
     }
 
     protected MaterialInfo(Parcel in) {
@@ -676,12 +627,7 @@ public class MaterialInfo  extends Base_Model implements Parcelable{
         this.AreaID = in.readInt();
         this.StockQty = (Float) in.readValue(Float.class.getClassLoader());
         this.BarCode = in.readString();
-        this.ColorCode = in.readString();
-        this.ColorName = in.readString();
-        this.SizeCode = in.readString();
-        this.SizeName = in.readString();
-        this.SampleCode = in.readString();
-        this.SKU = in.readString();
+        this.SerialNo = in.readString();
     }
 
     public static final Creator<MaterialInfo> CREATOR = new Creator<MaterialInfo>() {

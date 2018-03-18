@@ -10,4 +10,9 @@
     <string name="Msg_dialog_uploadArea">请扫描上架货位</string>
     <string name="Msg_GetT_InStockListADF">获取收货列表...</string>
     <string name="Msg_GetT_InStockDetailListByHeaderIDADF">获取收货明细列表...</string>
+    <string name="Msg_GetT_PalletDetailByBarCodeADF">获取收货条码信息...</string>
+    <string name="Msg_SaveT_InStockDetailADF">保存收货明细...</string>
+    <string name="Error_BarcodeNotInList">此物料不在列表中！</string>
+
+    <string name="Error_Num">输入数量超过可收货数量！</string>
 </resources>

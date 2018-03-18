@@ -6,7 +6,8 @@
         <activity android:name=".DeliveryChoice" />
         <activity android:name=".DeliveryScan" />
         <activity android:name=".CheckChoice" />
-        <activity android:name=".CheckScan"></activity>
+        <activity android:name=".CheckScan" />
+        <activity android:name=".CheckWeigh"></activity>
     </application>
 
 </manifest>

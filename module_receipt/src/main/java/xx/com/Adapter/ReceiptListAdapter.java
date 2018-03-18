@@ -27,7 +27,7 @@ public class ReceiptListAdapter extends BaseQuickAdapter<InStockInfo,BaseViewHol
     protected void convert(BaseViewHolder helper, InStockInfo item) {
         helper.setText(R.id.txt_VoucherNo,item.getErpVoucherNo()==null?item.getVoucherNo():item.getErpVoucherNo());
         helper.setText(R.id.txt_SupplierContent,"供："+item.getSupplierName());
-        helper.setText(R.id.txt_CreateTime,item.getStrCreateTime());
+        helper.setText(R.id.txt_CreateTime,item.getStrVoucherType());
     }
 
     public Filter getFilter() {
@@ -75,12 +75,9 @@ public class ReceiptListAdapter extends BaseQuickAdapter<InStockInfo,BaseViewHol
         }
 
         @Override
-        protected void publishResults(CharSequence constraint,
-                                      FilterResults results) {
+        protected void publishResults(CharSequence constraint,FilterResults results) {
             mData = (ArrayList<InStockInfo>) results.values;
-            if (results.count > 0) {
-                notifyDataSetChanged();
-            }
+            notifyDataSetChanged();
         }
 
     }

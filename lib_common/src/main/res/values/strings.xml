@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Lib_Common</string>
+    <string name="PickNumber">拣货数量：</string>
+    <string name="suggestLocal">推荐库位：</string>
 </resources>

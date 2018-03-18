@@ -32,6 +32,7 @@ public class Base_Model implements Parcelable {
     private String InitFlag;
     private String StrModifyTime;
     private int VoucherType;
+    private  String TaskNo;
     private String StrVoucherType;
     private int MaterialNoID;
     private String StrongHoldCode;
@@ -50,6 +51,79 @@ public class Base_Model implements Parcelable {
     private String ErpVoucherNo;
     private String PrintIPAdress;
     private int UserID;
+    private String ColorCode;
+    private String ColorName;
+    private String SizeCode;
+    private String SizeName;
+    private String SampleCode;
+    private String SKU;
+    private String BarCodeEAN;
+
+    public String getColorCode() {
+        return ColorCode;
+    }
+
+    public void setColorCode(String colorCode) {
+        ColorCode = colorCode;
+    }
+
+    public String getColorName() {
+        return ColorName;
+    }
+
+    public void setColorName(String colorName) {
+        ColorName = colorName;
+    }
+
+    public String getSizeCode() {
+        return SizeCode;
+    }
+
+    public void setSizeCode(String sizeCode) {
+        SizeCode = sizeCode;
+    }
+
+    public String getSizeName() {
+        return SizeName;
+    }
+
+    public void setSizeName(String sizeName) {
+        SizeName = sizeName;
+    }
+
+    public String getSampleCode() {
+        return SampleCode;
+    }
+
+    public void setSampleCode(String sampleCode) {
+        SampleCode = sampleCode;
+    }
+
+    public String getSKU() {
+        return SKU;
+    }
+
+    public void setSKU(String SKU) {
+        this.SKU = SKU;
+    }
+
+    public String getBarCodeEAN() {
+        return BarCodeEAN;
+    }
+
+    public void setBarCodeEAN(String barCodeEAN) {
+        BarCodeEAN = barCodeEAN;
+    }
+
+
+
+    public String getTaskNo() {
+        return TaskNo;
+    }
+
+    public void setTaskNo(String taskNo) {
+        TaskNo = taskNo;
+    }
 
     public int getUserID() {
         return UserID;
@@ -366,6 +440,7 @@ public class Base_Model implements Parcelable {
         dest.writeString(this.InitFlag);
         dest.writeString(this.StrModifyTime);
         dest.writeInt(this.VoucherType);
+        dest.writeString(this.TaskNo);
         dest.writeString(this.StrVoucherType);
         dest.writeInt(this.MaterialNoID);
         dest.writeString(this.StrongHoldCode);
@@ -384,6 +459,13 @@ public class Base_Model implements Parcelable {
         dest.writeString(this.ErpVoucherNo);
         dest.writeString(this.PrintIPAdress);
         dest.writeInt(this.UserID);
+        dest.writeString(this.ColorCode);
+        dest.writeString(this.ColorName);
+        dest.writeString(this.SizeCode);
+        dest.writeString(this.SizeName);
+        dest.writeString(this.SampleCode);
+        dest.writeString(this.SKU);
+        dest.writeString(this.BarCodeEAN);
         dest.writeInt(this.StockType);
     }
 
@@ -404,6 +486,7 @@ public class Base_Model implements Parcelable {
         this.InitFlag = in.readString();
         this.StrModifyTime = in.readString();
         this.VoucherType = in.readInt();
+        this.TaskNo = in.readString();
         this.StrVoucherType = in.readString();
         this.MaterialNoID = in.readInt();
         this.StrongHoldCode = in.readString();
@@ -424,18 +507,14 @@ public class Base_Model implements Parcelable {
         this.ErpVoucherNo = in.readString();
         this.PrintIPAdress = in.readString();
         this.UserID = in.readInt();
+        this.ColorCode = in.readString();
+        this.ColorName = in.readString();
+        this.SizeCode = in.readString();
+        this.SizeName = in.readString();
+        this.SampleCode = in.readString();
+        this.SKU = in.readString();
+        this.BarCodeEAN = in.readString();
         this.StockType = in.readInt();
     }
 
-    public static final Creator<Base_Model> CREATOR = new Creator<Base_Model>() {
-        @Override
-        public Base_Model createFromParcel(Parcel source) {
-            return new Base_Model(source);
-        }
-
-        @Override
-        public Base_Model[] newArray(int size) {
-            return new Base_Model[size];
-        }
-    };
 }

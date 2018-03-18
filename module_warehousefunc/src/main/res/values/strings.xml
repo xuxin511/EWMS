@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">module_wharehousefunc</string>
     <string name="innermove">移库</string>
+    <string name="innermoveScan">移库扫描</string>
     <string name="query">查询</string>
     <string name="adjust">库存调整</string>
+    <string name="MoveAreaNo">移入库：</string>
+    <string name="InnerMoveNum">移库数量：</string>
 </resources>

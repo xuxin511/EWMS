@@ -136,20 +136,56 @@ public class ReceiptChoice extends BaseActivity implements SwipeRefreshLayout.On
             LogUtil.WriteLog(ReceiptChoice.class, TAG_GetT_InStockList, result);
             ReturnMsgModelList<InStockInfo> returnMsgModel = GsonUtil.getGsonUtil().fromJson(result, new TypeToken<ReturnMsgModelList<InStockInfo>>() {
             }.getType());
-            InStockInfo inStockInfo=new InStockInfo();
-            inStockInfo.setErpVoucherNo("S01234567");
-            inStockInfo.setSupplierName("test1");
-            inStockInfo.setStrCreateTime("2018-01-01");
-            inStockInfos.add(inStockInfo);
-            BindRecycleView();
+//            InStockInfo inStockInfo=new InStockInfo();
+//            inStockInfo.setErpVoucherNo("SZ201801010001");
+//            inStockInfo.setSupplierName("上海闽兴");
+//            inStockInfo.setStrVoucherType("杂入");
+//            inStockInfos.add(inStockInfo);
+//            inStockInfo=new InStockInfo();
+//            inStockInfo.setErpVoucherNo("SC201801010002");
+//            inStockInfo.setSupplierName("佳轩");
+//            inStockInfo.setStrVoucherType("采购");
+//            inStockInfos.add(inStockInfo);
+//            inStockInfo=new InStockInfo();
+//            inStockInfo.setErpVoucherNo("SC201801010003");
+//            inStockInfo.setSupplierName("佳轩");
+//            inStockInfo.setStrVoucherType("采购");
+//            inStockInfos.add(inStockInfo);
+//            inStockInfo=new InStockInfo();
+//            inStockInfo.setErpVoucherNo("SC201801010004");
+//            inStockInfo.setSupplierName("泰宝");
+//            inStockInfo.setStrVoucherType("采购");
+//            inStockInfos.add(inStockInfo);
+//            inStockInfo=new InStockInfo();
+//            inStockInfo.setErpVoucherNo("SD201801010005");
+//            inStockInfo.setSupplierName("义乌仓");
+//            inStockInfo.setStrVoucherType("调拨入");
+//            inStockInfos.add(inStockInfo);
+//            inStockInfo=new InStockInfo();
+//            inStockInfo.setErpVoucherNo("ST201801010006");
+//            inStockInfo.setSupplierName("顾客");
+//            inStockInfo.setStrVoucherType("销售退");
+//            inStockInfos.add(inStockInfo);
+//            inStockInfo=new InStockInfo();
+//            inStockInfo.setErpVoucherNo("SC201801010007");
+//            inStockInfo.setSupplierName("宁夏惠亿");
+//            inStockInfo.setStrVoucherType("采购");
+//            inStockInfos.add(inStockInfo);
+//            inStockInfo=new InStockInfo();
+//            inStockInfo.setErpVoucherNo("SC201801010008");
+//            inStockInfo.setSupplierName("上海恩氏");
+//            inStockInfo.setStrVoucherType("采购");
+//            inStockInfos.add(inStockInfo);
+//
+//            BindRecycleView();
             if (returnMsgModel.getHeaderStatus().equals("S")) {
                 inStockInfos = returnMsgModel.getModelJson();
                 BindRecycleView();
             } else {
-                ToastUtil.show(returnMsgModel.getMessage());
+                MessageBox.Show(context,returnMsgModel.getMessage());
             }
         }catch (Exception ex){
-            ToastUtil.show(ex.getMessage());
+            MessageBox.Show(context,ex.getMessage());
         }
         CommonUtil.setEditFocus(edtFilterContent);
     }
