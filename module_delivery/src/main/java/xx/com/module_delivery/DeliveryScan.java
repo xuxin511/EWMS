@@ -130,6 +130,7 @@ public class DeliveryScan extends BaseActivity implements View.OnKeyListener{
                 return false;
             }
             String  ModelDetailJson=GsonUtil.parseModelToJson(outStockTaskDetailsInfos);
+            LogUtil.WriteLog(DeliveryScan.class, TAG_SaveT_OutStockTaskDetailADF,ModelDetailJson);
             RequestHandler.addRequestWithDialog(Request.Method.POST, TAG_SaveT_OutStockTaskDetailADF,
                     getString(R.string.Msg_SaveT_OutStockTaskDetailADF),
                     context, mHandler, RESULT_SaveT_OutStockTaskDetailADF, null,
@@ -185,8 +186,8 @@ public class DeliveryScan extends BaseActivity implements View.OnKeyListener{
     }
 
     private void initAdapter() {
+        deliveryScanAdapter = new DeliveryScanAdapter();
         deliveryScanAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
-        deliveryScanAdapter.setNewData(outStockTaskDetailsInfos);
         InitFrm();
     }
 
@@ -298,7 +299,7 @@ public class DeliveryScan extends BaseActivity implements View.OnKeyListener{
         StockInfo stockInfo=new StockInfo();
         stockInfo.setSerialNo(code);
         stockInfo.setUserID(CommonModel.userInfo.getID());
-        stockInfo.setMoveType("1");
+        stockInfo.setMoveType("1");//1：下架 2:移库
         String  ModelDetailJson=GsonUtil.parseModelToJson(stockInfo);
         LogUtil.WriteLog(DeliveryScan.class, TAG_GetStockModelADF, ModelDetailJson);
         RequestHandler.addRequestWithDialog(Request.Method.POST, TAG_GetStockModelADF,
@@ -315,6 +316,7 @@ public class DeliveryScan extends BaseActivity implements View.OnKeyListener{
             if (returnMsgModel.getHeaderStatus().equals("S")) {
                 stockInfos = returnMsgModel.getModelJson();
                 if (stockInfos != null && stockInfos.size() != 0) {
+                    txtItemName.setText(stockInfos.get(0).getMaterialDesc());
                     if(stockInfos.size()==1){
                         StockScanIndex=0;
                         edtAreaNo.setText(stockInfos.get(0).getAreaNo());

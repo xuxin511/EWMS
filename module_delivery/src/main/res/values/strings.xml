@@ -17,9 +17,14 @@
     <string name="Msg_GetT_OutTaskListADF">获取拣货单据...</string>
     <string name="Msg_GetT_OutStockListADF">获取复核单据...</string>
     <string name="Msg_GetT_OutTaskDetailListByHeaderIDADF">获取拣货单据明细...</string>
+    <string name="Msg_GetT_OutStockReviewDetailListByHeaderIDADF">获取复核单据明细...</string>
     <string name="Msg_GetStockModelADF">获取拣货条码信息...</string>
+    <string name="Msg_ScanOutStockReviewByBarCodeADF">获取复核条码信息...</string>
     <string name="Msg_AreaNoNotINStock">该库位无此物料，请确认！</string>
     <string name="Error_Num">输入数量超过可拣货数量！</string>
     <string name="Error_StockIsNotMore">输入数量超过库存数量！</string>
     <string name="Msg_SaveT_OutStockTaskDetailADF">保存拣货明细...</string>
+    <string name="Msg_SaveT_OutStockReviewDetailADF">提交复核信息...</string>
+
+    <string name="Error_CannotReview">该单据未复核完成！</string>
 </resources>

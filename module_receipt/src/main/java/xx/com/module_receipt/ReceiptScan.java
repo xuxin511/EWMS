@@ -341,9 +341,11 @@ public class ReceiptScan extends BaseActivity implements View.OnKeyListener{
                 for(int i=0;i<inStockDetailInfos.size();i++){
                     inStockDetailInfos.get(i).setAreaID(areaInfoModel.getID());
                     inStockDetailInfos.get(i).setUserID(CommonModel.userInfo.getID());
-                    inStockDetailInfos.get(i).setWareHouseID(CommonModel.userInfo.getWarehouseID());
+                    inStockDetailInfos.get(i).setHouseID(areaInfoModel.getHouseID());
+                    inStockDetailInfos.get(i).setWareHouseID(areaInfoModel.getWarehouseID());
                 }
                 String  ModelDetailJson=GsonUtil.parseModelToJson(inStockDetailInfos);
+                LogUtil.WriteLog(ReceiptScan.class, TAG_SaveT_InStockDetailADF, ModelDetailJson);
                 RequestHandler.addRequestWithDialog(Request.Method.POST, TAG_SaveT_InStockDetailADF,
                         getString(R.string.Msg_SaveT_InStockDetailADF),
                         context, mHandler, RESULT_SaveT_InStockDetailADF, null,

@@ -105,13 +105,13 @@ public class DeliveryChoice extends BaseActivity implements SwipeRefreshLayout.O
         outStockTaskInfos=new ArrayList<>();
         edtFilterContent.setText("");
 
-        OutStockTaskInfo outStockTaskInfo=new OutStockTaskInfo();
-        outStockTaskInfo.setTaskNo("DS201801020001");
-        outStockTaskInfo.setStrVoucherType("拣货单");
-        outStockTaskInfo.setStrCreateTime("2018-01-02");
-        outStockTaskInfo.setVouUser("朱叶");
-        outStockTaskInfo.setPickUserName("张良友");
-        outStockTaskInfos.add(outStockTaskInfo);
+//        OutStockTaskInfo outStockTaskInfo=new OutStockTaskInfo();
+//        outStockTaskInfo.setTaskNo("DS201801020001");
+//        outStockTaskInfo.setStrVoucherType("拣货单");
+//        outStockTaskInfo.setStrCreateTime("2018-01-02");
+//        outStockTaskInfo.setVouUser("朱叶");
+//        outStockTaskInfo.setPickUserName("张良友");
+//        outStockTaskInfos.add(outStockTaskInfo);
 //        outStockTaskInfo=new OutStockTaskInfo();
 //        outStockTaskInfo.setTaskNo("DS201801020002");
 //        outStockTaskInfo.setStrVoucherType("拣货单");
@@ -135,7 +135,7 @@ public class DeliveryChoice extends BaseActivity implements SwipeRefreshLayout.O
 //        outStockTaskInfo.setVouUser("朱叶");
 //        outStockTaskInfo.setPickUserName("胡慧中");
 //        outStockTaskInfos.add(outStockTaskInfo);
-        BindRecycleView();
+        //BindRecycleView();
         GetT_OutStockTaskInfo();
     }
 

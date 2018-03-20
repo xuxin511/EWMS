@@ -66,7 +66,7 @@ public class Main extends BaseActivity {
 //        funcModels.add(new FuncModel(R.drawable.upshelf,getString(R.string.upshelf),MainActions.Action_Main_Receipt));
         funcModels.add(new FuncModel(R.drawable.undercarriage,getString(R.string.undercarriage),MainActions.Action_Main_Delivery));
         funcModels.add(new FuncModel(R.drawable.check,getString(R.string.check),MainActions.Action_Main_Check));
-        funcModels.add(new FuncModel(R.drawable.trans,getString(R.string.transfor),MainActions.Action_Main_Trans));
+       // funcModels.add(new FuncModel(R.drawable.trans,getString(R.string.transfor),MainActions.Action_Main_Trans));
         funcModels.add(new FuncModel(R.drawable.inventory,getString(R.string.inventory),MainActions.Action_Main_Inventory));
         funcModels.add(new FuncModel(R.drawable.adjust,getString(R.string.adjust),MainActions.Action_Main_Adjust));
         funcModels.add(new FuncModel(R.drawable.move,getString(R.string.move),MainActions.Action_Main_InnerMove));

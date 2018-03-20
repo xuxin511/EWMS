@@ -6,4 +6,9 @@
     <string name="adjust">库存调整</string>
     <string name="MoveAreaNo">移入库：</string>
     <string name="InnerMoveNum">移库数量：</string>
+
+    <string name="Msg_InnerMoveGetStockModelADF">获取移库条码信息...</string>
+    <string name="Error_InnerMove_StockIsNotMore">移库数量超过库存数量！</string>
+    <string name="ChoiceMoveAreaNo">选择移出库位：</string>
+    <string name="Msg_SaveMoveStockToOutADF">保存移库数据...</string>
 </resources>
