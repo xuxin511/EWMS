@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 
+import xx.com.lib_common.Common_Model.CommUtil.SharePreferUtil;
+
 public class Start extends AppCompatActivity {
 
     private Handler handler = new Handler();
@@ -21,6 +23,8 @@ public class Start extends AppCompatActivity {
                 gotoLogin();
             }
         }, 2000);
+        SharePreferUtil.ReadShare(Start.this);
+        SharePreferUtil.ReadUserShare(Start.this);
     }
 
     /**

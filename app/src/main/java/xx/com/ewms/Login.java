@@ -70,6 +70,7 @@ public class Login extends BaseActivity {
             }.getType());
             if (returnMsgModel.getHeaderStatus().equals("S")) {
                 CommonModel.userInfo=returnMsgModel.getModelJson();
+                SharePreferUtil.SetUserShare(context,CommonModel.userInfo);
                 Intent intent =new Intent(context,Main.class);
                 startActivityLeft(intent);
                // ARouter.getInstance().build(LoginActions.Action_Login_Main).navigation();
@@ -115,13 +116,13 @@ public class Login extends BaseActivity {
     protected void initData() {
         super.initData();
         txtVersion.setText(updateVersionService.getVersionCode(context)+"");
-        edtUserName.setText("2014030016");
-        edtPassword.setText("123456");
-        SharePreferUtil.ReadUserShare(context);
+//        edtUserName.setText("2014030016");
+//        edtPassword.setText("123456");
+      //  SharePreferUtil.ReadUserShare(context);
         if( CommonModel.userInfo!=null){
             edtUserName.setText( CommonModel.userInfo.getUserNo());
             edtPassword.setText(DESUtil.decode( CommonModel.userInfo.getPassWord()));
-            txtWareHousName.setText(CommonModel.userInfo.getWarehouseName());
+          //  txtWareHousName.setText(CommonModel.userInfo.getWarehouseName());
             lstWarehouse=CommonModel.userInfo.getLstWarehouse();
         }
         initAnims();

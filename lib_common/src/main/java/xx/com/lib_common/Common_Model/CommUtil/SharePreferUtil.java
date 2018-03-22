@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.xx.chinetek.chineteklib.model.Paramater;
 
 import java.lang.reflect.Type;
 
@@ -35,4 +36,29 @@ public class SharePreferUtil {
         edit.commit();
         CommonModel.userInfo=user;
     }
+
+    /**
+     * 配置文件
+     * @param context
+     */
+    public static void ReadShare(Context context){
+        SharedPreferences sharedPreferences=context.getSharedPreferences("Setting", Context.MODE_PRIVATE);
+        if(sharedPreferences!=null) {
+            Paramater.IPAdress=sharedPreferences.getString("IPAdress", "192.168.1.1");
+            Paramater.Port=sharedPreferences.getInt("Port", 80);
+            Paramater.SOCKET_TIMEOUT=sharedPreferences.getInt("TimeOut", 30000);
+            CommonModel.IsInputQty=sharedPreferences.getBoolean("IsInputQty",true);
+        }
+    }
+
+    public static void SetShare(Context context){
+        SharedPreferences sharedPreferences=context.getSharedPreferences("Setting", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit=sharedPreferences.edit();
+        edit.putString("IPAdress",Paramater.IPAdress);
+        edit.putInt("Port",Paramater.Port);
+        edit.putInt("TimeOut",Paramater.SOCKET_TIMEOUT);
+        edit.putBoolean("IsInputQty", CommonModel.IsInputQty);
+        edit.apply();
+    }
+
 }

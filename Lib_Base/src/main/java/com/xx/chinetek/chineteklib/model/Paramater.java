@@ -19,7 +19,7 @@ public class Paramater {
     /**
      *超时时间
      */
-    public static int SOCKET_TIMEOUT=300000;
+    public static int SOCKET_TIMEOUT=30000;
 
     /**
     是否显示TitleBar：登陆界面设置为false

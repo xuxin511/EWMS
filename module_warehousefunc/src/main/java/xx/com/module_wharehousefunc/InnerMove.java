@@ -147,7 +147,7 @@ public class InnerMove extends BaseActivity implements View.OnKeyListener{
             final String[] items = AreaNos.toArray(new String[0]);
             new AlertDialog.Builder(context).setTitle(getResources().getString(R.string.ChoiceMoveAreaNo))// 设置对话框标题
                     .setIcon(android.R.drawable.ic_dialog_info)// 设置对话框图
-                     .setItems(items, new DialogInterface.OnClickListener() {
+                    .setItems(items, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             // TODO 自动生成的方法存根

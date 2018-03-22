@@ -6,4 +6,8 @@
     <string name="Setting_TimeOut">超时时间：</string>
     <string name="Setting_IsInputNum">是否启用数量输入：</string>
     <string name="Setting_Save">保存</string>
+    <string name="Setting_in_ipadress">请输入服务器地址：</string>
+    <string name="Setting_in_port">请输入服务端口：</string>
+    <string name="Setting_in_timeout">请输入服务超时时间(秒)：</string>
+
 </resources>
